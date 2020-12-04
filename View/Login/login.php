@@ -20,7 +20,7 @@
 
                     <div class="login-wrapper my-auto ">
                         <h1 class="display-3" style="text-align:center">Entrar</h1>
-                        <form action="#!">
+                        <form action="../../../ProyectoFinal/Controller/LoginController.php" method="post" name="formulario">
                             <div class="form-group">
                                 <label for="user">Usuario</label>
                                 <input name="user" id="user" class="form-control" placeholder="Ingresa tu usuario">
@@ -29,10 +29,14 @@
                                 <label for="password">Contraseña</label>
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
                             </div>
-                            <input name="login" id="login" class="btn btn-block login-btn btn-primary" type="button" value="Entrar">
+                            <input name="entrar" onclick="ValidarVacios();" class="btn btn-block login-btn btn-primary" type="button" value="Entrar">
                         </form>
                         <br />
-                        <p class="login-wrapper-footer-text">No tienes una cuenta? <a href="../../view/login/registro.php" class="btn btn-outline-info">Registrate aquí</a> <a href="../../../ProyectoFinal/index.php" class="btn btn-outline-danger">Regresar</a></p>
+                        <div  id="alerta"></div>
+
+                        <p class="login-wrapper-footer-text">No tienes una cuenta? <a href="../../view/login/registro.php" class="btn btn-outline-info">Registrate aquí</a>
+                            <a href="../../../ProyectoFinal/index.php" class="btn btn-outline-danger">Regresar</a></p>
+
                     </div>
                 </div>
                 <div class="col-sm-6 px-0 d-none d-sm-block px-5">
@@ -43,6 +47,7 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="../../../ProyectoFinal/src/js/validar.js"> </script>
 </body>
 
 </html>

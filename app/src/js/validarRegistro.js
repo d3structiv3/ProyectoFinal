@@ -1,36 +1,33 @@
+
 function mostrar(id) {
-    if (id == "alumno") {
-        $("#alumno").show();
-        $("#maestro").hide();
-        $("#tutor").hide();
-        $("#administrador").hide();
-    }
+    var formcomun = `
+    <label for="email" class="form-label mt-1">Correo electronico</label>
+    <input type="email" class="form-control" aria-describedby="basic-addon3" name="correo">
+    <label for="clave" class="form-label mt-1">Contraseña</label>
+    <input type="text" class="form-control" aria-describedby="basic-addon3" name="clave">`;
+    var boton = '<input type="submit" class="mt-3 btn btn-dark" value="Enviar">';
+    var tipo = document.getElementById('rol').value;
+    console.log("Elemento " + tipo);
 
-    if (id == "maestro") {
-        $("#alumno").hide();
-        $("#maestro").show();
-        $("#tutor").hide();
-        $("#administrador").hide();
-    }
-
-    if (id == "tutor") {
-        $("#alumno").hide();
-        $("#maestro").hide();
-        $("#tutor").show();
-        $("#administrador").hide();
-    }
-
-    if (id == "administrador") {
-        $("#alumno").hide();
-        $("#maestro").hide();
-        $("#tutor").hide();
-        $("#administrador").show();
-    }
-
-    if (id == "opciones") {
-        $("#alumno").hide();
-        $("#maestro").hide();
-        $("#tutor").hide();
-        $("#administrador").hide();
+    if (tipo == "1") {
+        //admin
+        document.getElementById('addform').innerHTML = formcomun + boton;
+    } else if (tipo == "2") {
+        let tutor = `
+        <label for="name" class="form-label mt-1">Nombre completo</label>
+        <input type="text" class="form-control" aria-describedby="basic-addon3" name="nombre">
+        <label for="clave" class="form-label mt-1">Telefono</label>
+        <input type="number" class="form-control" aria-describedby="basic-addon3" name="telefono">`;
+        var boton = '<input type="submit" class="mt-3 btn btn-dark" value="Enviar">';
+        document.getElementById('addform').innerHTML = formcomun + tutor + boton;
+    } else if (tipo == "3") {
+        let profesor = `
+        <label for="name" class="form-label mt-1">Nombre o nombres</label>
+        <input type="text" class="form-control" aria-describedby="basic-addon3" name="nombre">
+        <label for="apellido" class="form-label mt-1">Apellidos</label>
+        <input type="text" class="form-control" aria-describedby="basic-addon3" name="apellidos">
+        <label for="profesion" class="form-label mt-1">Liceciatura o ingenieria en:</label>
+        <input type="text" class="form-control" aria-describedby="basic-addon3" name="profesion">`;
+        document.getElementById('addform').innerHTML = formcomun + profesor + boton;
     }
 }

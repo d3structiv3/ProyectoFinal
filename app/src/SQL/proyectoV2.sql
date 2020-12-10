@@ -91,7 +91,7 @@ CREATE TABLE `profesor` (
   `ProfesorId` int(11) NOT NULL,
   `Nombre` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `Apellidos` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `Pedagogia` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `Profecion` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `UsuarioId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 

@@ -13,12 +13,14 @@ Usuarios::create([
     'RolId' => $rol
 ]);
 
-$user = $database::table('usuarios')->where('Email', $_POST['correo'])->first();
-$id_usr = $user->UsuarioId;
+//$user = $database::table('usuarios')->where('Email', $_POST['correo'])->first();
+//$id_usr = $user->UsuarioId;
 
 switch ($rol) {
     case '1':
+        
         echo "Admin";
+        header('Location:../../View/Administrador/index.php');
         break;
     case '2':
         Tutor::create([
@@ -26,6 +28,7 @@ switch ($rol) {
             'Telefono' => $_POST['telefono'],
             'UsuarioId' => $id_usr,
         ]);
+        header('Location:../../View/Administrador/index.php');
         break;
     case '3':
         echo "Profesor";
@@ -35,9 +38,11 @@ switch ($rol) {
             'Profesion' => $_POST['profesion'],
             'UsuarioId' => $id_usr,
         ]);
+        header('Location:../../View/Administrador/index.php');
         break;
     case '4':
         echo "Alumno";
+        header('Location:../../View/Administrador/index.php');
         break;
 
     case 'grupo':
@@ -47,5 +52,6 @@ switch ($rol) {
 
     default:
         # code...
+        header('Location:../../View/Administrador/index.php');
         break;
 }

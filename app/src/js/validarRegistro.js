@@ -12,7 +12,8 @@ function mostrar(id) {
     if (tipo == "1") {
         //admin
         document.getElementById('addform').innerHTML = formcomun + boton;
-    } else if (tipo == "2") {
+    }
+    if (tipo == "2") {
         let tutor = `
         <label for="name" class="form-label mt-1">Nombre completo</label>
         <input type="text" class="form-control" aria-describedby="basic-addon3" name="nombre">
@@ -20,7 +21,8 @@ function mostrar(id) {
         <input type="number" class="form-control" aria-describedby="basic-addon3" name="telefono">`;
         var boton = '<input type="submit" class="mt-3 btn btn-dark" value="Enviar">';
         document.getElementById('addform').innerHTML = formcomun + tutor + boton;
-    } else if (tipo == "3") {
+    }
+    if (tipo == "3") {
         let profesor = `
         <label for="name" class="form-label mt-1">Nombre o nombres</label>
         <input type="text" class="form-control" aria-describedby="basic-addon3" name="nombre">
@@ -29,5 +31,10 @@ function mostrar(id) {
         <label for="profesion" class="form-label mt-1">Liceciatura o ingenieria en:</label>
         <input type="text" class="form-control" aria-describedby="basic-addon3" name="profesion">`;
         document.getElementById('addform').innerHTML = formcomun + profesor + boton;
+    }
+    if (tipo == "4") {
+        console.log("alumno");
+        let alumno=`<a data-bs-toggle="collapse" href="#alumnoform" role="button" aria-expanded="false" aria-controls="collapseProfesores">Agregar alumno</a>`;
+        document.getElementById('addform').innerHTML = alumno;
     }
 }

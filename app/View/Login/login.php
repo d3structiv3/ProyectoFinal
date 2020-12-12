@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <main>
+    <main class="mt-5">
         <div class="container ">
             <div class="row">
                 <div class="col-sm-6 login-section-wrapper">
@@ -30,19 +30,21 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
                             </div>
                             <input name="entrar" onclick="ValidarVacios();" class="btn btn-block login-btn btn-primary" type="button" value="Entrar">
+                            <a href="../../index.php" class="btn btn-block login-btn btn-outline-primary">Regresar</a>
+                           
                         </form>
                         <br />
                         <div  id="alerta">
                         
                         </div>
 
-                        <p class="login-wrapper-footer-text">No tienes una cuenta? <a href="../../view/login/registro.php" class="btn btn-outline-info">Registrate aquí</a>
-                            <a href="../../index.php" class="btn btn-outline-danger">Regresar</a></p>
+                       
+                            
 
                     </div>
                 </div>
-                <div class="col-sm-6 px-0 d-none d-sm-block px-5">
-                    <img src="https://www.flaticon.es/svg/static/icons/svg/2643/2643368.svg">
+                <div class="col-sm-6 px-0 d-none d-sm-block px-5 text-center">
+                    <img src="https://www.flaticon.es/svg/static/icons/svg/2643/2643368.svg" width="350" height="350">
                 </div>
             </div>
         </div>

@@ -30,9 +30,7 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
                             </div>
                             <input name="entrar" " class=" btn btn-block login-btn btn-primary" type="submit" value="Entrar">
-                            <div id="alerta">
-                                
-                            </div>
+                                                       
                             <a href="../../index.php" class="btn btn-block login-btn btn-outline-primary">Regresar</a>
 
                         </form>

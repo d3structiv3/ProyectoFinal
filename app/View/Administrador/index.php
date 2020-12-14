@@ -1,8 +1,11 @@
 <?php
 include_once '../../../vendor/autoload.php';
 include_once '../../database/database.php';
-include_once '../../Controller/LoginController.php';
+session_start();
 
+if($_SESSION['rol_name']!='Admin'){
+    header('location:../../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,10 +37,8 @@ include_once '../../Controller/LoginController.php';
                 <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1651/1651104.svg" alt=""> </div>
                 <div class="title">
                     <span>
-                        <?php 
-                            echo $query ;
-                            
-                        
+                        <?php
+                            echo 'Rol: '.$_SESSION['rol_name'];
                         ?>
                     </span>
                 </div>
@@ -70,7 +71,7 @@ include_once '../../Controller/LoginController.php';
                 </a>
             </div>
             <div class="item">
-                <a data-bs-toggle="collapse" href="#" role="button" aria-expanded="false" aria-controls="collapseProfesores">
+                <a data-bs-toggle="collapse" href="../../Controller/LoginController.php?end=1" role="button" aria-expanded="false" aria-controls="collapseProfesores">
                     <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1574/1574351.svg" alt=""> </div>
                     <div class="title"><span>Cerrar Sesión</span></div>
                 </a>

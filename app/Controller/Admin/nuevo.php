@@ -13,8 +13,8 @@ Usuarios::create([
     'RolId' => $rol
 ]);
 
-//$user = $database::table('usuarios')->where('Email', $_POST['correo'])->first();
-//$id_usr = $user->UsuarioId;
+$user = $database::table('usuarios')->where('Email', $_POST['correo'])->first();
+$id_usr = $user->UsuarioId;
 
 switch ($rol) {
     case '1':

@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    include '../../Controller/sessiones.php';
+    $session = new Sessions();
+    if(isset($_SESSION['rol_name'])){
+        $session->valsesion($_SESSION['rol'],2);
+    }else{
+       echo "No existe sesion"; 
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,17 +34,23 @@
                         <form action="../../Controller/LoginController.php" method="post" name="formulario">
                             <div class="form-group">
                                 <label for="user">Usuario</label>
-                                <input name="email" id="user" class="form-control" type="email" placeholder="ejemplo@ejemplo.com">
+                                <input name="email" id="user" class="form-control" type="email" placeholder="ejemplo@ejemplo.com" required>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="password">Contraseña</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña" required>
                             </div>
                             <input name="entrar" " class=" btn btn-block login-btn btn-primary" type="submit" value="Entrar">
                                                        
                             <a href="../../index.php" class="btn btn-block login-btn btn-outline-primary">Regresar</a>
 
                         </form>
+                            <?php
+                                if(isset($_GET['msj'])){
+                                    echo' <div class="alert alert-danger mt-1 text-center"><b>'.$_GET['msj'].'</b></div>';
+                                }   
+                            ?>
+                       
                         <br />
 
 

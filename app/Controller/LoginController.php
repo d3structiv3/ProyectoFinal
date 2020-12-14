@@ -9,41 +9,11 @@ include_once __DIR__ . '../../database/database.php';
 session_start();
 
 
-
-if (isset($_SESSION[$query = $database::table('roles')->value('RolId')])) {
-    var_dump($query);
-    switch ($query) {
-        case '1':
-            header('location:../View/Administrador/index.php');
-            $query = $database::table('roles')->where('RolId', '1')->value('Nombre');
-            break;
-        case '2':
-            header('location:../View/Tutor/index.php');
-            $query = $database::table('roles')->where('RolId', '2')->value('Nombre');
-            break;
-        case '3':
-            header('location:../View/Profesor/index.php');
-            $query = $database::table('roles')->where('RolId', '3')->value('Nombre');
-            break;
-        case '4':
-            header('location:../View/Alumno/index.php');
-            $query = $database::table('roles')->where('RolId', '4')->value('Nombre');
-            break;
-
-        default:
-    }
-}
-
-
-
-
-
-
 // Cerrar Sesión
-if (isset($_GET['cerrar_sesion'])) {
+if (isset($_GET['end'])) {
     session_unset();
-
     session_destroy();
+    header('location:../index.php');
 }
 
 
@@ -56,15 +26,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     if ($query == null) {
         // no existe usuario
-        echo "<script>;
-         alert('Usuario o Contraseña incorrectos');  
-     window.location.href='http://localhost/escuela/app/index.php'; 
-</script>";
-        header('Refresh:5; url= ../View/Login/login.php');
-        echo '<div class="alert alert-danger" role="alert" >Usuario o Contraeña incorrectos <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+
+        $msj ="Usuario o clave incorrectas";
+        header('location:../View/Login/login.php?msj='.$msj);
     } else {
         // valida el rol
-
+        $rol_name=$database::table('roles')->where('RolId', $query->RolId)->first();
+        $_SESSION['user_id']=$query->UsuarioId ;
+        $_SESSION['rol']=$query->RolId;
+        $_SESSION['rol_name'] = $rol_name->Nombre;
         switch ($query->RolId) {
             case '1':
                 header('location:../View/Administrador/index.php');

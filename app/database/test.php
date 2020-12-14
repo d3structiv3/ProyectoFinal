@@ -3,28 +3,13 @@
 include_once '../../vendor/autoload.php';
 include_once 'database.php';
 include_once '../Model/roles.php';
+$query = $database::table('usuarios')->where('Email', 'mxdestructive@gmail.com')->where('Clave', '123456')->first();   
+ $rol_name=$database::table('roles')->where('RolId', $query->RolId)->first();
+ var_dump($rol_name->Nombre);
 
 
 
-
-// $email = 'ejemplo@ejemplo.com';
-// $clave = '54321';
-
-// $rol = 'Tutor';
-
-// Roles::create([
-//     'Nombre' => $rol,
-// ]);
-// $usuario = $database::table('roles')->get();
-// var_dump($usuario);
 ?>
 
-<tr>
-    <?php
-    $profesores = $database::table('profesor')->get();
 
-    foreach ($profesores as $item) { ?>
-        <td><?php echo $item->Nombre;?></td>
-        <td><?php echo $item->ProfesorId;
-        } ?></td>
-</tr>
+   

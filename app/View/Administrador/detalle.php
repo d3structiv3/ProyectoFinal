@@ -7,16 +7,21 @@ include '../../src/Layout/menu.php';
 
 
 <?php
+if(!isset($_GET['id'])){
+    header('location:index.php');
+}
+$profesores=$database::table('profesor')->where('ProfesorId', $_GET['id'])->first();
 $grupos = $database::table('grupos')->where('ProfesorId', $_GET['id'])->get();
 
+    
 ?>
 <div class="container">
-    <h4 class="text-center mt-3">Detalle del profesor</h4>
+    <h4 class="text-center mt-3">Detalle del profesor: <?php echo '<b>'.$profesores->Nombre.' '.$profesores->Apellidos.'</b>'?></h4>
     <div class="text-right">
         <a href="index.php" class="btn btn-danger text-right">Regresar al dashboard</a>
     </div>
 
-    <h5 class="p-3">Mis grupos</h5>
+    <h5 class="p-3">Grupos</h5>
     <div class="d-flex">
         <?php
         foreach ($grupos as $item) {
@@ -26,7 +31,7 @@ $grupos = $database::table('grupos')->where('ProfesorId', $_GET['id'])->get();
 
             echo '<h5 class="card-title"><b>Grado: </b>' . $item->GradoId . '</h5>';
             echo '<h5 class="card-title"><b>Grupo: </b>' . $item->Valor . '</h5>';
-            echo '<a href="#" class="btn btn-primary">Ver alumnos</a>';
+            echo '<a href="alumnos.php?id='.$item->GrupoId.'" class="btn btn-primary">Ver alumnos</a>';
             echo '</div></div>';
         }
 

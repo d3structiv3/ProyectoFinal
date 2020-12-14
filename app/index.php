@@ -1,4 +1,11 @@
-
+<?php
+    session_start();
+    include './Controller/sessiones.php';
+    $session = new Sessions();
+    if(isset($_SESSION['rol_name'])){
+        $session->valsesion($_SESSION['rol'],1);
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="es">

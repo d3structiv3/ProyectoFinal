@@ -2,6 +2,7 @@
 include_once '../../../vendor/autoload.php';
 include_once '../../database/database.php';
 include_once '../../Controller/LoginController.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,7 @@ include_once '../../Controller/LoginController.php';
                 <div class="title">
                     <span>
                         <?php
-                        echo $query;
+                            echo $_SESSION['rol_name'];
                         ?>
                     </span>
                 </div>

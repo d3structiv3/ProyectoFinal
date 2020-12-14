@@ -56,13 +56,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     if ($query == null) {
         // no existe usuario
-       
-        header('location: ../View/Login/login.php');
-
-        echo "<script>
-        document.getElementById('alerta').innerHTML='<div class='alert alert-danger' role='alert >Debes de llenar todos los campos <button type='button' class='close' data-dismiss='alert'>&times;</button></div>';
-        
-        </script";
+        echo "<script>;
+         alert('Usuario o Contraseña incorrectos');  
+     window.location.href='http://localhost/escuela/app/index.php'; 
+</script>";
+        header('Refresh:5; url= ../View/Login/login.php');
+        echo '<div class="alert alert-danger" role="alert" >Usuario o Contraeña incorrectos <button type="button" class="close" data-dismiss="alert">&times;</button></div>';
     } else {
         // valida el rol
 

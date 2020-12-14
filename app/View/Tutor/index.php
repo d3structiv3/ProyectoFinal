@@ -1,6 +1,7 @@
 <?php
-include_once __DIR__ . '../../../vendor/autoload.php';
-include_once __DIR__ . '../../database/database.php';
+include_once '../../../vendor/autoload.php';
+include_once '../../database/database.php';
+include_once '../../Controller/LoginController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@ include_once __DIR__ . '../../database/database.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/escuela/app/src/css/menu.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    
+
 
 <body class="body-expanded">
     <div id="sidemenu" class="menu-expanded">
@@ -26,16 +27,23 @@ include_once __DIR__ . '../../database/database.php';
         <!-- ITEMS -->
         <div id="menu-items">
             <div class="item">
-                <a href="#">
-                    <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1651/1651104.svg" alt=""> </div>
-                    <div class="title"><span>Iniciar sesion</span></div>
+                <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1651/1651104.svg" alt=""> </div>
+                <div class="title">
+                    <span>
+                        <?php
+                        echo $query;
+                        ?>
+                    </span>
+                </div>
+            </div>
+            <div class="item">
+                <a data-bs-toggle="collapse" href="" role="button" aria-expanded="false" aria-controls="collapseProfesores">
+                    <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1574/1574351.svg" alt=""> </div>
+                    <div class="title"><span>Cerrar Sesión</span></div>
                 </a>
-            </div>           
+            </div>
         </div>
-        <?php
-            
-            echo $query;
-        ?>
+
     </div>
 
 
@@ -50,4 +58,5 @@ include_once __DIR__ . '../../database/database.php';
         });
     </script>
 </body>
+
 </html>

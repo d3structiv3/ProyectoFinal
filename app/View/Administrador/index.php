@@ -1,7 +1,7 @@
 <?php
 include_once '../../../vendor/autoload.php';
 include_once '../../database/database.php';
-
+include_once '../../Controller/LoginController.php';
 
 ?>
 <!DOCTYPE html>
@@ -31,6 +31,18 @@ include_once '../../database/database.php';
         <!-- ITEMS -->
         <div id="menu-items">
             <div class="item">
+                <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1651/1651104.svg" alt=""> </div>
+                <div class="title">
+                    <span>
+                        <?php 
+                            echo $query ;
+                            
+                        
+                        ?>
+                    </span>
+                </div>
+            </div>
+            <div class="item">
                 <a data-bs-toggle="collapse" href="#profesores" role="button" aria-expanded="false" aria-controls="collapseProfesores">
                     <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/2436/2436654.svg" alt=""> </div>
                     <div class="title"><span>Profesores</span></div>
@@ -55,6 +67,12 @@ include_once '../../database/database.php';
                 <a data-bs-toggle="collapse" href="#addusr" role="button" aria-expanded="false" aria-controls="collapseProfesores">
                     <div class="icon"><img src="https://www.flaticon.com/svg/static/icons/svg/3893/3893246.svg" alt=""> </div>
                     <div class="title"><span>Nuevo usuario</span></div>
+                </a>
+            </div>
+            <div class="item">
+                <a data-bs-toggle="collapse" href="#" role="button" aria-expanded="false" aria-controls="collapseProfesores">
+                    <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1574/1574351.svg" alt=""> </div>
+                    <div class="title"><span>Cerrar Sesión</span></div>
                 </a>
             </div>
 

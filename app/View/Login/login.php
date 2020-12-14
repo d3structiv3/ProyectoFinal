@@ -20,26 +20,27 @@
 
                     <div class="login-wrapper my-auto ">
                         <h1 class="display-3" style="text-align:center">Entrar</h1>
-                        <form action="../../../ProyectoFinal/Controller/LoginController.php" method="post" name="formulario">
+                        <form action="../../Controller/LoginController.php" method="post" name="formulario">
                             <div class="form-group">
                                 <label for="user">Usuario</label>
-                                <input name="user" id="user" class="form-control" placeholder="Ingresa tu usuario">
+                                <input name="email" id="user" class="form-control" type="email" placeholder="ejemplo@ejemplo.com">
                             </div>
                             <div class="form-group mb-4">
                                 <label for="password">Contraseña</label>
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
                             </div>
-                            <input name="entrar" onclick="ValidarVacios();" class="btn btn-block login-btn btn-primary" type="button" value="Entrar">
+                            <input name="entrar" " class=" btn btn-block login-btn btn-primary" type="submit" value="Entrar">
+                            <div id="alerta">
+                                
+                            </div>
                             <a href="../../index.php" class="btn btn-block login-btn btn-outline-primary">Regresar</a>
-                           
+
                         </form>
                         <br />
-                        <div  id="alerta">
-                        
-                        </div>
 
-                       
-                            
+
+
+
 
                     </div>
                 </div>

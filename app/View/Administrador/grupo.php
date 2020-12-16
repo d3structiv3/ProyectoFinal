@@ -42,7 +42,7 @@ var_dump($database::table('grados')->get());
                 echo '<br> <b>Profesor: </b>'.$item->Nombre.' '.$item->Apellidos;
                 echo'</div>';
                 echo '  <div class="card-body">';
-                echo '  <a href="#" class="btn btn-primary">Alumnos...</a>';
+                echo '<a href="alumnos.php?id='.$item->GrupoId.'" class="btn btn-primary">Ver alumnos</a>';
                 echo '</div></div>';
             }
             ?>

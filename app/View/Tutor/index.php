@@ -1,10 +1,14 @@
 <?php
 include_once '../../../vendor/autoload.php';
 include_once '../../database/database.php';
-include_once '../../Controller/LoginController.php';
+session_start();
+
+if ($_SESSION['rol_name'] != 'Tutor') {
+    header('location:../../index.php');
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +35,7 @@ include_once '../../Controller/LoginController.php';
                 <div class="title">
                     <span>
                         <?php
-                        echo $query;
+                        echo $_SESSION['rol_name'];
                         ?>
                     </span>
                 </div>
@@ -47,6 +51,50 @@ include_once '../../Controller/LoginController.php';
     </div>
 
 
+    <div class="container">
+        <?php
+            $tutor= $database::table('tutor')->where('UsuarioId',$_SESSION['user_id'])->first();
+            
+        ?>
+        <h4 class="p-3 text-center">Hola: <?php echo $tutor->Nombre;?> </h4>
+        <h6>Alumnos asociados al tutor:</h6>
+           <?php
+            $alumnos= $database::table('alumno as a')
+                ->join('grupos as g', 'a.GrupoId', '=', 'g.GrupoId')
+                ->join('profesor as p','g.ProfesorId','=','p.ProfesorId')
+                ->where('a.TutorId',$tutor->TutorId)
+                ->select(
+                    'a.AlumnoId',
+                    'a.Nombre',
+                    'a.Apellidos',
+                    'p.Nombre AS NombreP',
+                    'p.Apellidos AS ApellidosP',
+                    'p.Profesion',
+                    'g.GradoId',
+                    'g.GrupoId',
+                    'g.Valor'
+                    
+                )
+                ->get();
+            foreach($alumnos AS $item){
+                echo'<div class="card ml-2" style="width: 20rem;">';
+                echo ' <div class="card-header">';
+                echo 'Datos del alumno: <br>';
+                echo '<b>Nombre: </b>'.$item->Nombre.' '.$item->Apellidos;
+                echo '<br> <b>Grado : </b>'.$item->GradoId;
+                echo '<br> <b>Grupo : </b>'.$item->Valor;
+                echo '<br>Datos del docente:';
+                echo '<br><b>Profesor: </b>'.$item->NombreP.' '.$item->ApellidosP;
+                echo '<br> <b>Licenciatura en: </b>'.$item->Profesion;
+                echo'</div>';
+                echo '  <div class="card-body">';
+                echo '<a href="alumnos.php?id='.$item->AlumnoId.'" class="btn btn-success">Ver evaluaciones</a>';
+                echo '</div></div>';
+            }
+           ?>
+
+
+    </div>
     <script>
         const btn = document.querySelector('#menu-btn');
         const menu = document.querySelector('#sidemenu');

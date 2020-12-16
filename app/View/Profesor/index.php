@@ -30,12 +30,12 @@ if ($_SESSION['rol_name'] != 'Profesor') {
         </div>
         <!-- ITEMS -->
         <div id="menu-items">
-            <div class="item">
-                <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1651/1651104.svg" alt=""> </div>
+        <div class="item">
+                <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1319/1319240.svg" alt=""> </div>
                 <div class="title">
                     <span>
                         <?php
-                        echo 'Rol: ' . $_SESSION['rol_name'];
+                            echo 'Rol: '.$_SESSION['rol_name'];
                         ?>
                     </span>
                 </div>

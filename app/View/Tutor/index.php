@@ -30,18 +30,18 @@ if ($_SESSION['rol_name'] != 'Tutor') {
         </div>
         <!-- ITEMS -->
         <div id="menu-items">
-            <div class="item">
-                <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1651/1651104.svg" alt=""> </div>
+        <div class="item">
+                <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1319/1319240.svg" alt=""> </div>
                 <div class="title">
                     <span>
                         <?php
-                        echo $_SESSION['rol_name'];
+                            echo 'Rol: '.$_SESSION['rol_name'];
                         ?>
                     </span>
                 </div>
             </div>
             <div class="item">
-                <a data-bs-toggle="collapse" href="" role="button" aria-expanded="false" aria-controls="collapseProfesores">
+                <a data-bs-toggle="collapse" href="../../Controller/LoginController.php?end=1" role="button" aria-expanded="false" aria-controls="collapseProfesores">
                     <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1574/1574351.svg" alt=""> </div>
                     <div class="title"><span>Cerrar Sesión</span></div>
                 </a>

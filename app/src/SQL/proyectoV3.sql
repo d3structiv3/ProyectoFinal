@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2020 a las 06:10:32
+-- Tiempo de generación: 16-12-2020 a las 18:17:38
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -43,7 +43,9 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`AlumnoId`, `Nombre`, `Apellidos`, `GrupoId`, `TutorId`, `created_at`, `updated_at`, `RolId`) VALUES
-(1, 'Brandon', 'Martinez Lopez ', 2, 5, '2020-12-12 16:26:44', '2020-12-12 10:26:44', 4);
+(3, 'Leonardo', 'Del Rio Ayerbe', 5, 5, '2020-12-14 12:38:45', '2020-12-14 06:38:45', 4),
+(4, 'Marcela ', 'García Rueda ', 5, 7, '2020-12-14 13:12:51', '2020-12-14 07:12:51', 4),
+(5, 'María Natalia', 'Cervantes Luna', 6, 8, '2020-12-14 07:33:46', '2020-12-14 01:33:46', 4);
 
 -- --------------------------------------------------------
 
@@ -76,6 +78,33 @@ INSERT INTO `asignatura` (`AsignaturaId`, `Nombre`, `GradoId`, `created_at`, `up
 (10, 'Formación Cívica y Ética ', 2, '2020-12-12 07:47:03', '2020-12-12 01:47:03'),
 (11, 'Educación Artística', 2, '2020-12-12 07:47:14', '2020-12-12 01:47:14'),
 (12, 'Educación Física', 2, '2020-12-12 07:47:38', '2020-12-12 01:47:38');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calificaciones`
+--
+
+CREATE TABLE `calificaciones` (
+  `CalificacionId` int(11) NOT NULL,
+  `AsignaturaId` int(11) NOT NULL,
+  `AlumnoId` int(11) NOT NULL,
+  `Calificacion` varchar(20) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `calificaciones`
+--
+
+INSERT INTO `calificaciones` (`CalificacionId`, `AsignaturaId`, `AlumnoId`, `Calificacion`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, '10', '2020-12-16 08:32:56', '2020-12-16 02:32:56'),
+(2, 2, 3, '9', '2020-12-16 08:34:12', '2020-12-16 02:34:12'),
+(3, 3, 3, '8', '2020-12-16 08:44:35', '2020-12-16 02:44:35'),
+(4, 4, 3, '10', '2020-12-16 08:44:48', '2020-12-16 02:44:48'),
+(5, 5, 3, '7', '2020-12-16 08:45:10', '2020-12-16 02:45:10'),
+(6, 6, 3, '10', '2020-12-16 08:50:11', '2020-12-16 02:50:11');
 
 -- --------------------------------------------------------
 
@@ -122,10 +151,10 @@ CREATE TABLE `grupos` (
 --
 
 INSERT INTO `grupos` (`GrupoId`, `Valor`, `GradoId`, `created_at`, `updated_at`, `ProfesorId`) VALUES
-(2, '1A-V-2020', 1, '2020-12-12 07:40:53', '2020-12-12 01:40:53', 5),
-(3, '1B-V-2020', 1, '2020-12-12 07:41:54', '2020-12-12 01:41:54', 4),
-(4, '1A-M-2020', 1, '2020-12-12 07:44:03', '2020-12-12 01:44:03', 4),
-(5, '1B-M-2020', 1, '2020-12-12 07:45:05', '2020-12-12 01:45:05', 5);
+(5, '1A-M-2020', 1, '2020-12-14 03:29:51', '2020-12-13 21:29:51', 5),
+(6, '1A-V-2020', 1, '2020-12-14 03:43:53', '2020-12-13 21:43:53', 5),
+(7, '2A-M-2020', 2, '2020-12-14 03:58:38', '2020-12-13 21:58:38', 4),
+(8, '2A-V-2020', 2, '2020-12-14 03:58:38', '2020-12-13 21:58:38', 4);
 
 -- --------------------------------------------------------
 
@@ -148,10 +177,12 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`ProfesorId`, `Nombre`, `Apellidos`, `Profesion`, `UsuarioId`, `created_at`, `updated_at`) VALUES
-(4, 'Juan Daniel', 'Ramirez Hinojosa', 'Pedagogía ', 8, '2020-12-09 13:17:26', '2020-12-09 07:17:26'),
+(4, 'Juan ', 'Ramirez Hinojosa', 'Pedagogía ', 8, '2020-12-14 03:42:41', '2020-12-13 21:42:41'),
 (5, 'Norverto Mario', 'Maya Oritz ', 'Geografia ', 9, '2020-12-10 10:55:02', '2020-12-10 04:55:02'),
-(6, 'Jose David', 'Rodriguez Almaraz', 'Pedagogía ', 10, '2020-12-10 12:45:40', '2020-12-10 06:45:40'),
-(7, 'Agustin', 'Hernández Villa ', 'Pedagogia', 11, '2020-12-12 14:37:44', '2020-12-12 08:37:44');
+(6, 'David', 'Rodriguez Almaraz', 'Pedagogía ', 10, '2020-12-14 03:43:01', '2020-12-13 21:43:01'),
+(7, 'Agustin', 'Hernández Villa ', 'Pedagogia', 11, '2020-12-12 14:37:44', '2020-12-12 08:37:44'),
+(8, 'Adriana Carolina ', 'Rey Sanchez', 'Pedagogia', 15, '2020-12-14 10:34:13', '2020-12-14 04:34:13'),
+(9, 'Cinthya ', 'Dussan Gomes ', 'Español', 16, '2020-12-14 10:39:30', '2020-12-14 04:39:30');
 
 -- --------------------------------------------------------
 
@@ -196,7 +227,9 @@ CREATE TABLE `tutor` (
 --
 
 INSERT INTO `tutor` (`TutorId`, `Nombre`, `Telefono`, `UsuarioId`, `created_at`, `updated_at`) VALUES
-(5, 'Jose Martinez Alvares ', '5598235852', 4, '2020-12-09 13:03:56', '2020-12-09 07:03:56');
+(5, 'Jose Martinez Alvares ', '5598235852', 4, '2020-12-09 13:03:56', '2020-12-09 07:03:56'),
+(7, 'Angel Diaz Fernandez', '5569632145', 18, '2020-12-14 06:12:21', '2020-12-14 00:12:21'),
+(8, 'German Cervantes Casas', '5532740285', 19, '2020-12-14 14:31:42', '2020-12-14 08:31:42');
 
 -- --------------------------------------------------------
 
@@ -218,14 +251,17 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`UsuarioId`, `Email`, `Clave`, `RolId`, `created_at`, `updated_at`) VALUES
-(1, 'destructivemx@gmail.com', '123456', 1, '2020-12-07 21:19:44', '2020-12-07 15:19:44'),
+(1, 'mxdestructive@gmail.com', '123456', 1, '2020-12-14 02:37:58', '2020-12-13 20:37:58'),
 (4, 'ejemplo@ejemplo.com', '12345', 2, '2020-12-09 13:03:56', '2020-12-09 07:03:56'),
 (8, 'profesor@profesor.com', '12345', 3, '2020-12-09 13:17:26', '2020-12-09 07:17:26'),
 (9, 'ortiznaca@ejemplo.com', '12345', 3, '2020-12-10 10:55:01', '2020-12-10 04:55:01'),
 (10, 'nuevo@profesor.com', '12345', 3, '2020-12-10 12:45:40', '2020-12-10 06:45:40'),
 (11, 'hernandez12@gmail.com', '12345', 3, '2020-12-12 14:37:43', '2020-12-12 08:37:43'),
-(12, 'nuevoadmin@admin.com', '12345', 1, '2020-12-12 14:53:45', '2020-12-12 08:53:45'),
-(13, 'nuevoadmin@admin.com', '12345', 1, '2020-12-12 14:56:45', '2020-12-12 08:56:45');
+(13, 'nuevoadmin@admin.com', '12345', 1, '2020-12-12 14:56:45', '2020-12-12 08:56:45'),
+(15, 'profadrey@gmail.com', '12345', 3, '2020-12-14 10:34:13', '2020-12-14 04:34:13'),
+(16, 'cinthyaduss@gmail.com', '12345', 3, '2020-12-14 10:39:30', '2020-12-14 04:39:30'),
+(18, 'angeldiaz@gmail.com', '12345', 2, '2020-12-14 13:09:37', '2020-12-14 07:09:37'),
+(19, 'germancervantes@gmail.com', '12345', 2, '2020-12-14 14:31:42', '2020-12-14 08:31:42');
 
 --
 -- Índices para tablas volcadas
@@ -246,6 +282,14 @@ ALTER TABLE `alumno`
 ALTER TABLE `asignatura`
   ADD PRIMARY KEY (`AsignaturaId`),
   ADD KEY `GradoId` (`GradoId`);
+
+--
+-- Indices de la tabla `calificaciones`
+--
+ALTER TABLE `calificaciones`
+  ADD PRIMARY KEY (`CalificacionId`),
+  ADD KEY `AsignaturaId` (`AsignaturaId`),
+  ADD KEY `AlumnoId` (`AlumnoId`);
 
 --
 -- Indices de la tabla `grados`
@@ -296,13 +340,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `AlumnoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AlumnoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
   MODIFY `AsignaturaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `calificaciones`
+--
+ALTER TABLE `calificaciones`
+  MODIFY `CalificacionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `grados`
@@ -314,13 +364,13 @@ ALTER TABLE `grados`
 -- AUTO_INCREMENT de la tabla `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `GrupoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `GrupoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `ProfesorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ProfesorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -332,13 +382,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `tutor`
 --
 ALTER TABLE `tutor`
-  MODIFY `TutorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `TutorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `UsuarioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `UsuarioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas
@@ -357,6 +407,13 @@ ALTER TABLE `alumno`
 --
 ALTER TABLE `asignatura`
   ADD CONSTRAINT `asignatura_ibfk_1` FOREIGN KEY (`GradoId`) REFERENCES `grados` (`GradoId`);
+
+--
+-- Filtros para la tabla `calificaciones`
+--
+ALTER TABLE `calificaciones`
+  ADD CONSTRAINT `calificaciones_ibfk_1` FOREIGN KEY (`AsignaturaId`) REFERENCES `asignatura` (`AsignaturaId`),
+  ADD CONSTRAINT `calificaciones_ibfk_2` FOREIGN KEY (`AlumnoId`) REFERENCES `alumno` (`AlumnoId`);
 
 --
 -- Filtros para la tabla `grupos`

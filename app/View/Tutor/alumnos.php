@@ -44,25 +44,32 @@ if ($_SESSION['rol_name'] != 'Tutor') {
                 </thead>
                 <tbody>
                     <?php
-                    $acum=0;
-                    $total=0;
-                        foreach($calificaciones AS $item => $value){
-                            echo "<tr>";
-                            echo "<td>".$value->Nombre."</td>";
-                            echo "<td>".$value->Calificacion."</td>";
-                            // foreach(){
-                            // }
-                            echo "</tr>";
-                            $acum+=$value->Calificacion;
-                        }
-                        
+
+                    $acum = 0;
+                    $total = 0;
+                    foreach ($calificaciones as $item => $value) {
+                        echo "<tr>";
+                        echo "<td>" . $value->Nombre . "</td>";
+                        echo "<td>" . $value->Calificacion . "</td>";
+                        $value->AlumnoId;
+                        // foreach(){
+                        // }
+                        echo "</tr>";
+                        $acum += $value->Calificacion;
+                    }
+
                     ?>
                     <tr>
                         <td class="text-right"><b>Promedio:</b></td>
-                        <td><?php echo $acum/6; ?></td>
+                        <td><?php echo $acum / 6; ?></td>
                     </tr>
                 </tbody>
             </table>
+            <div align=right>
+                <a href="<?php echo'boleta.php?id='.$value->AlumnoId?>" target="_blank">
+                <input type="button"  class="btn btn-info" value="Imprimir boleta"></input>
+                </a>
+            </div>
         </div>
     </div>
 </body>

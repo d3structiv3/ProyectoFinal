@@ -88,5 +88,5 @@ $pdf->Cell(135, 10, utf8_decode('Promedio Final'), 0, 0, 'R');
 $pdf->Cell(12, 10, utf8_decode($acum / 6), 0, 0, 'R');
 
 
-
+$pdf->Output('boleta.pdf','D');
 $pdf->Output();

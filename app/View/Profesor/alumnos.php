@@ -1,8 +1,12 @@
 <?php
 include_once '../../../vendor/autoload.php';
 include_once '../../database/database.php';
-?>
+session_start();
 
+if ($_SESSION['rol_name'] != 'Profesor') {
+    header('location:../../index.php');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -48,8 +52,10 @@ include_once '../../database/database.php';
                         <th>Tutor</th>
                         <th>Telefono</th>
                         <th>Correo</th>
+                        <th></th>
                     </tr>
                 </thead>
+               
                 <tbody>
                     <?php
                       $query = $database::table('alumno as a')
@@ -73,6 +79,7 @@ include_once '../../database/database.php';
                         echo '<td>'. $item->NombreT.'</td>';
                          echo '<td>'. $item->Telefono.'</td>';
                          echo '<td>'. $item->Email.'</td>';
+                         echo '<td> <a href="calificar.php?id='. $item->AlumnoId .'" class="btn btn-link">Calificar</td>';
                         echo '</tr>';
                     }
                     ?>

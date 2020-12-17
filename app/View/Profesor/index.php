@@ -64,12 +64,28 @@ if ($_SESSION['rol_name'] != 'Profesor') {
 
     <div class="container">
         <h4 class="p-3 text-center">Dashboard profesor</h4>
+        <?php
+        $profesorName = $database::table('profesor')->where('UsuarioId', $_SESSION['user_id'])->first();
+        $get = $database::table('profesor')->where('ProfesorId', $profesorName->ProfesorId)
+            ->select(
+                'Nombre',
+                'Apellidos'
+            )
+            ->get();
+
+        ?>
+        <h4 class="p-3 text-center">
+            <?php foreach ($get as $item) {
+                echo '<b>Bienvenido Profesor: </b>' . $item->Nombre .'  '.$item->Apellidos. '<br>';
+            }
+            ?>
+        </h4>
 
         <div class="collapse" id="grupos">
             <?php
             $profesor = $database::table('profesor')->where('UsuarioId', $_SESSION['user_id'])->first();
             $query = $database::table('grupos')->where('ProfesorId', $profesor->ProfesorId)->get();
-           
+
             ?>
             <h5>Grupos</h5>
             <div class="d-flex">
@@ -91,17 +107,17 @@ if ($_SESSION['rol_name'] != 'Profesor') {
         <div class="collapse" id="asignaturas">
             <h5 class="">Asignaturas segun los grupos asignados</h5>
             <?php
-             $profe = $database::table('grupos as g')->where('ProfesorId', $profesor->ProfesorId)
-               ->join('asignatura as a', 'g.GradoId', '=', 'a.GradoId')
-               ->join('grados as r', 'g.GradoId', '=', 'r.GradoId')
-               ->select(
-                   'g.Valor',
-                   'a.Nombre',
-                   'r.GradoId'
-               )
-               ->get();
+            $profe = $database::table('grupos as g')->where('ProfesorId', $profesor->ProfesorId)
+                ->join('asignatura as a', 'g.GradoId', '=', 'a.GradoId')
+                ->join('grados as r', 'g.GradoId', '=', 'r.GradoId')
+                ->select(
+                    'g.Valor',
+                    'a.Nombre',
+                    'r.GradoId'
+                )
+                ->get();
 
-              
+
             ?>
             <table class="table table-striped table-sm">
                 <thead class="table-dark">
@@ -109,7 +125,7 @@ if ($_SESSION['rol_name'] != 'Profesor') {
                         <th>Grado</th>
                         <th>Grupo</th>
                         <th>Nombre</th>
-                        
+
                         <th></th>
                     </tr>
                 </thead>
@@ -117,10 +133,10 @@ if ($_SESSION['rol_name'] != 'Profesor') {
                     <?php
                     foreach ($profe as $item) {
                         echo "<tr>";
-                        echo '<td>' . $item->GradoId. '</td>';
+                        echo '<td>' . $item->GradoId . '</td>';
                         echo '<td>' . $item->Valor . '</td>';
                         echo '<td>' . $item->Nombre . '</td>';
-                        echo '<td>'. '</td>';
+                        echo '<td>' . '</td>';
                         echo "</tr>";
                     } ?>
 

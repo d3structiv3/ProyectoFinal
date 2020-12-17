@@ -5,7 +5,7 @@
     if(isset($_SESSION['rol_name'])){
         $session->valsesion($_SESSION['rol'],2);
     }else{
-       echo "No existe sesion"; 
+       
     }
 
 ?>

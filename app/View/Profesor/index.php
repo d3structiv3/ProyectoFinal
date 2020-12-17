@@ -30,12 +30,12 @@ if ($_SESSION['rol_name'] != 'Profesor') {
         </div>
         <!-- ITEMS -->
         <div id="menu-items">
-        <div class="item">
+            <div class="item">
                 <div class="icon"><img src="https://www.flaticon.es/svg/static/icons/svg/1319/1319240.svg" alt=""> </div>
                 <div class="title">
                     <span>
                         <?php
-                            echo 'Rol: '.$_SESSION['rol_name'];
+                        echo 'Rol: ' . $_SESSION['rol_name'];
                         ?>
                     </span>
                 </div>
@@ -69,6 +69,7 @@ if ($_SESSION['rol_name'] != 'Profesor') {
             <?php
             $profesor = $database::table('profesor')->where('UsuarioId', $_SESSION['user_id'])->first();
             $query = $database::table('grupos')->where('ProfesorId', $profesor->ProfesorId)->get();
+           
             ?>
             <h5>Grupos</h5>
             <div class="d-flex">
@@ -76,7 +77,7 @@ if ($_SESSION['rol_name'] != 'Profesor') {
                 foreach ($query as $item) {
                     echo '<div class="card ml-2" style="width: 15rem;">';
                     echo ' <div class="card-header">';
-                    echo '<b>Grado: </b>' . $item->GradoId.'<br>';
+                    echo '<b>Grado: </b>' . $item->GradoId . '<br>';
                     echo '<b>Grupo: </b>' . $item->Valor;
                     echo '</div>';
                     echo '  <div class="card-body">';
@@ -89,6 +90,46 @@ if ($_SESSION['rol_name'] != 'Profesor') {
 
         <div class="collapse" id="asignaturas">
             <h5 class="">Asignaturas segun los grupos asignados</h5>
+            <?php
+             $profe = $database::table('grupos as g')->where('ProfesorId', $profesor->ProfesorId)
+               ->join('asignatura as a', 'g.GradoId', '=', 'a.GradoId')
+               ->join('grados as r', 'g.GradoId', '=', 'r.GradoId')
+               ->select(
+                   'g.Valor',
+                   'a.Nombre',
+                   'r.GradoId'
+               )
+               ->get();
+
+              
+            ?>
+            <table class="table table-striped table-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Grado</th>
+                        <th>Grupo</th>
+                        <th>Nombre</th>
+                        
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($profe as $item) {
+                        echo "<tr>";
+                        echo '<td>' . $item->GradoId. '</td>';
+                        echo '<td>' . $item->Valor . '</td>';
+                        echo '<td>' . $item->Nombre . '</td>';
+                        echo '<td>'. '</td>';
+                        echo "</tr>";
+                    } ?>
+
+                </tbody>
+            </table>
+
+
+
+
         </div>
     </div>
     <script>

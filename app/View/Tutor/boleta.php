@@ -62,16 +62,16 @@ $alumno = $database::table('alumno as a')->where('AlumnoId', $_GET['id'])
     ->get();
 //Datos del profesor y Alumno
 foreach ($alumno as $item) {
-    $pdf->Cell(48, 10, 'Nombre del profesor :', 0, 0, 'C');
-    $pdf->Cell(30, 10, $item->NombreP, 0, 0, 'C');
-    $pdf->Cell(25, 10, $item->ApellidosP, 0, 1, 'C');
-    $pdf->Cell(46, 10, 'Nombre del Alumno :', 0, 0, 'C');
-    $pdf->Cell(19, 10, $item->Nombre, 0, 0, 'C');
-    $pdf->Cell(33, 10, $item->Apellidos, 0, 1, 'C');
-    $pdf->Cell(18, 10, 'Grado :', 0, 0, 'C');
-    $pdf->Cell(85, 10, $item->GradoId, 0, 1, 'C');
-    $pdf->Cell(18, 10, 'Grupo :', 0, 0, 'C');
-    $pdf->Cell(85, 10, $item->Valor, 0, 1, 'C');
+    $pdf->Cell(48, 10, utf8_decode('Nombre del profesor :'), 0, 0, 'C');
+    $pdf->Cell(30, 10, utf8_decode($item->NombreP), 0, 0, 'C');
+    $pdf->Cell(25, 10, utf8_decode($item->ApellidosP), 0, 1, 'C');
+    $pdf->Cell(46, 10, utf8_decode('Nombre del Alumno :'), 0, 0, 'C');
+    $pdf->Cell(40, 10, utf8_decode($item->Nombre), 0, 0, 'C');
+    $pdf->Cell(40, 10, utf8_decode($item->Apellidos), 0, 1, 'C');
+    $pdf->Cell(18, 10, utf8_decode('Grado :'), 0, 0, 'C');
+    $pdf->Cell(85, 10, utf8_decode($item->GradoId), 0, 1, 'C');
+    $pdf->Cell(18, 10, utf8_decode('Grupo :'), 0, 0, 'C');
+    $pdf->Cell(85, 10, utf8_decode($item->Valor), 0, 1, 'C');
 }
 $pdf->Ln(20);
 

@@ -66,7 +66,7 @@ if ($_SESSION['rol_name'] != 'Tutor') {
                 </tbody>
             </table>
             <div align=right>
-                <a href="<?php echo'boleta.php?id='.$value->AlumnoId?>" target="_blank">
+                <a href="<?php echo'boleta.php?id='.$_GET['id']?>" target="_blank">
                 <input type="button"  class="btn btn-info" value="Imprimir boleta"></input>
                 </a>
             </div>
